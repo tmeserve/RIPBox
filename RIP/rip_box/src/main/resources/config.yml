@@ -1,0 +1,7 @@
+death:
+  personal_message_time: 60
+  personal_message: "&bYour death location is {location}. &4You have {time} before this location is broadcasted."
+  broadcast_message_time: 300
+  broadcast_message: "&a&l{player}'s death location was at {location}. Hurry with a {key_name} to open it!"
+  key_name: "&cDeath Key"
+  sign_message: "&b{player}'s Death Chest"
