@@ -1,7 +1,7 @@
 main: com.github.tmeserve.RIPPlugin
-name: RIP Box
+name: RIPBox
 version: 1.0
 description: Drops a chest at a players death location and broadcasts it
-api-version: 1.18.1
+api-version: 1.18
 author: tmeserve
 website: www.github.com/tmeserve

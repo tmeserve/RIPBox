@@ -1,0 +1,12 @@
+com\github\tmeserve\ConfigManager.class
+com\github\tmeserve\commands\Location.class
+com\github\tmeserve\events\RIPDeath.class
+com\github\tmeserve\commands\Commands.class
+com\github\tmeserve\database\Database.class
+com\github\tmeserve\database\Profile.class
+com\github\tmeserve\database\ProfileManager.class
+com\github\tmeserve\RIPPlugin.class
+com\github\tmeserve\util\TimeManager.class
+com\github\tmeserve\database\PlayerData.class
+com\github\tmeserve\util\Util.class
+com\github\tmeserve\util\TimeManager$1.class

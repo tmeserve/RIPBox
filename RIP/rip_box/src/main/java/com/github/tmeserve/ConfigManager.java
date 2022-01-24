@@ -3,7 +3,7 @@ package com.github.tmeserve;
 import java.io.File;
 import java.io.IOException;
 
-import com.github.tmeserve.commands.RIP;
+import com.github.tmeserve.commands.Location;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -43,9 +43,9 @@ public class ConfigManager {
         { e.printStackTrace(); }
     }
 
-    public FileConfiguration getDefaultConfig()
-    {
-        return plugin.getConfig();
-    }
+    // public FileConfiguration getDefaultConfig()
+    // {
+    //     return plugin.getConfig();
+    // }
     
 }

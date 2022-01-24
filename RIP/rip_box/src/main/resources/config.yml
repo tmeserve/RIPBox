@@ -5,3 +5,10 @@ death:
   broadcast_message: "&a&l{player}'s death location was at {location}. Hurry with a {key_name} to open it!"
   key_name: "&cDeath Key"
   sign_message: "&b{player}'s Death Chest"
+mongo:
+  IP: "localhost"
+  port: 27017
+  database: "server"
+  collection: "deaths"
+  username: "admin"
+  password: "password"
