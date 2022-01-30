@@ -35,6 +35,7 @@ public class TimeManager {
         String message = Util.chat(this.plugin.getConfig().getString("death.broadcast_message"));
         message = message.replaceAll("{player}", p.getDisplayName());
         message = message.replaceAll("{location}", "");
+        this.plugin.getServer().broadcastMessage(message);
     }
 
     public void sendPlayerDeathLocation(Player p, Long time)
@@ -43,6 +44,7 @@ public class TimeManager {
         String message = Util.chat(this.plugin.getConfig().getString("death.broadcast_message"));
         message = message.replaceAll("{time}", String.valueOf(t));
         message = message.replaceAll("{location}", "");
+        p.sendMessage(message);
     }
 
     public void startPlayerDeathTime(Player player)

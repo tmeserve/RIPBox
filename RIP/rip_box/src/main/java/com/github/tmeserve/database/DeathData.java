@@ -3,17 +3,16 @@ package com.github.tmeserve.database;
 
 import com.github.tmeserve.RIPPlugin;
 import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.UpdateOptions;
 import org.bson.Document;
 import org.bukkit.Location;
 import org.bukkit.World;
 
 import java.util.UUID;
 
-public class PlayerData {
+public class DeathData {
 
     private RIPPlugin plugin;
-    private Database db = Database.instance;
+    private Database db;
 
     private java.util.UUID UUID;
     private String playerName;
@@ -21,26 +20,32 @@ public class PlayerData {
     private Location deathLocation;
     private Long deathTime;
 
-    public PlayerData(RIPPlugin plugin, UUID uuid, String name) {
+    public DeathData(RIPPlugin plugin, UUID uuid, String name)
+    {
+        this.plugin = plugin;
+        
+        this.db = this.plugin.getDB();
         this.UUID = uuid;
         this.playerName = name;
-        // this.deathLocation = location;
-        // this.deathTime = deathTime;
     }
 
     public void setDeathLocation(Location deathLocation)
     { this.deathLocation = deathLocation; }
 
+    public Location getDeathLocation()
+    { return this.deathLocation; }
+
     public void setDeathTime(Long deathTime)
     { this.deathTime = deathTime; }
 
-    public void resetPlayer() {
-        
-    }
+    public Long getDeathTime()
+    { return this.deathTime; }
 
-    public void load() {
+    public void load()
+    {
         Document document = db.getServerCollection().find(Filters.eq("uuid", UUID.toString())).first();
-        if(document !=null) {
+        if(document !=null)
+        {
             String worldStr = document.getString("World");
             World world = this.plugin.getServer().getWorld(worldStr);
             double x = document.getDouble("X");
@@ -51,14 +56,17 @@ public class PlayerData {
         }
     }
 
-    public void save() {
+    public void save()
+    {
         Document document = new Document();
         document.put("uuid", this.UUID.toString());
         document.put("name", this.playerName);
+        document.put("time", this.deathTime);
         document.put("world", this.deathLocation.getWorld().getName());
         document.put("x", this.deathLocation.getX());
         document.put("y", this.deathLocation.getY());
         document.put("z", this.deathLocation.getZ());
-        db.getServerCollection().replaceOne(Filters.eq("uuid", this.UUID.toString()), document, new UpdateOptions().upsert(true));
+
+        this.db.getServerCollection().insertOne(document);
     }
 }

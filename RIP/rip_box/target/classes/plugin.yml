@@ -5,3 +5,19 @@ description: Drops a chest at a players death location and broadcasts it
 api-version: 1.18
 author: tmeserve
 website: www.github.com/tmeserve
+commands:
+  deathkey:
+    description: Gives a death key to open another persons death chest
+    usage: /<command> (name) [amount]
+    permission: ripdeath.commands.deathkey
+  deathlocation:
+    description: Gives a death location for a person
+    usage: /<command> [name]
+    permission: ripdeath.commands.deathlocation
+permissions:
+  ripdeath.commands.deathkey:
+    description: Allows deathkey command
+    default: op
+  ripdeath.commands.deathlocation:
+    description: Allows deathlocation command
+    default: true

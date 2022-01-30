@@ -1,15 +1,12 @@
 package com.github.tmeserve.database;
 
 
-import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.github.tmeserve.RIPPlugin;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
-import com.mongodb.MongoCredential;
-import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -38,11 +35,12 @@ public class Database {
         Logger mongoLobber = Logger.getLogger("org.mongodb.driver");
         mongoLobber.setLevel(Level.WARNING);
         connect();
-        profileManager = new ProfileManager(this);
+        profileManager = new ProfileManager(plugin, this);
         instance = this;
     }
 
-    public void connect() {
+    public void connect()
+    {
         FileConfiguration config = this.plugin.getConfig();
         String IP = config.getString("mongo.IP");
         this.plugin.getLogger().info("IP: {ip}".replace("{ip}", IP));
@@ -55,9 +53,7 @@ public class Database {
 
         String uriStr = "mongodb://{user}:{pass}@{ip}:{port}/".replace("{user}", username).replace("{pass}", password).replace("{ip}", String.valueOf(IP)).replace("{port}", String.valueOf(port));
         MongoClientURI uri = new MongoClientURI(uriStr);
-
-        // MongoCredential mongoCredential = MongoCredential.createCredential(username, databaseName, password.toCharArray());
-        // client = new MongoClient(new ServerAddress(IP, port), Collections.singletonList(mongoCredential));
+        
         client = new MongoClient(uri);
         database = client.getDatabase(databaseName);
         serverCollection = database.getCollection(collectionName);

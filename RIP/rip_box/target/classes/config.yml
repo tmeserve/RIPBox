@@ -4,11 +4,28 @@ death:
   broadcast_message_time: 300
   broadcast_message: "&a&l{player}'s death location was at {location}. Hurry with a {key_name} to open it!"
   key_name: "&cDeath Key"
+  key_material: "STICK"
+  key_needed_message: "&4&bNeed {key_name} in hand"
   sign_message: "&b{player}'s Death Chest"
+  access_denied: "&b{player} please wait, {time} seconds, before opening this chest"
+  # Put blank if you want no message
+  # {location} = x, y, z
+  # {x}, {y}, {z}, {world} are valid options instead of location
+  chest_found_message: "&b{player} found {chestOwner}'s chest at {location}"
+  incorrect_usage_message: "&4&bIncorrect Usage. {usage}"
+  deathkey_usage: "&4/deathkey [name] amount"
+  deathlocation_player_not_found_message: "&4{player} doesn't have a death location"
+  deathlocation_not_time_yet_message: "&4{player}'s chest is not unlocked yet. Please try again later."
+  permission_denied: "&4&bPermission Denied"
+  console_not_allowed_message: "&bConsole isn't allowed to use this command"
+  # {location} = x, y, z
+  # {x}, {y}, {z}, {world} are valid options instead of location
+  # {player} will get replaced with your if own
+  location_message: "&b{player}'s death location is {location}"
 mongo:
   IP: "localhost"
   port: 27017
   database: "server"
   collection: "deaths"
   username: "admin"
-  password: "password"
+  password: "password" 

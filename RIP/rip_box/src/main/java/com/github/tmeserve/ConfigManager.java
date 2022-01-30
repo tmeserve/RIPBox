@@ -3,7 +3,7 @@ package com.github.tmeserve;
 import java.io.File;
 import java.io.IOException;
 
-import com.github.tmeserve.commands.Location;
+import com.github.tmeserve.commands.CommandLocation;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
