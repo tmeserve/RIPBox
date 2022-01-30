@@ -43,9 +43,7 @@ public class Database {
     {
         FileConfiguration config = this.plugin.getConfig();
         String IP = config.getString("mongo.IP");
-        this.plugin.getLogger().info("IP: {ip}".replace("{ip}", IP));
         int port = config.getInt("mongo.port");
-        this.plugin.getLogger().info("Port: {port}".replace("{port}", String.valueOf(port)));
         String databaseName = config.getString("mongo.database");
         String collectionName = config.getString("mongo.collection");
         String username = config.getString("mongo.username");

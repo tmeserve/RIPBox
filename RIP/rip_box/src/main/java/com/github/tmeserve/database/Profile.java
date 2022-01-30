@@ -21,7 +21,6 @@ public class Profile
 
     public Profile(RIPPlugin plugin, UUID uuid, String name) {
         this.plugin = plugin;
-        this.plugin.getLogger().info("Profile");
         this.UUID = uuid;
         this.playerName = name;
         

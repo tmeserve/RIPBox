@@ -103,7 +103,6 @@ public class ProfileManager {
                     profile = new Profile(this.plugin, uuid, name);
                 profile.addDeathData(time, loc);
                 this.profiles.put(uuid, profile);
-                this.plugin.getLogger().info("Adding item");
             }
         } finally
         {

@@ -141,13 +141,10 @@ public class RIPDeath implements Listener
                 continue;
             itemAmount++;
         }
-
-        this.plugin.getLogger().info("Item Amount: " + String.valueOf(itemAmount));
-
+        
         if (itemAmount <= 27)
         {
             setBlockToMaterial(chestBlock, Material.CHEST);
-            this.plugin.getLogger().info("Less than");
         }
         else
         {
@@ -162,21 +159,17 @@ public class RIPDeath implements Listener
             {
                 chestData.setType(org.bukkit.block.data.type.Chest.Type.RIGHT);
                 dChestData.setType(org.bukkit.block.data.type.Chest.Type.LEFT);
-                this.plugin.getLogger().info("WEST");
             }
             else if (chestBlock.getRelative(BlockFace.EAST).getType() == Material.CHEST)
             {
                 chestData.setType(org.bukkit.block.data.type.Chest.Type.LEFT);
                 dChestData.setType(org.bukkit.block.data.type.Chest.Type.RIGHT);
-                this.plugin.getLogger().info("EAST");
             }
             chest.setBlockData(chestData);
             dChest.setBlockData(dChestData);
             
             chest.update();
             dChest.update();
-            
-            this.plugin.getLogger().info("Elsed");
         }
         
         Inventory chestInv = chest.getInventory();
@@ -225,8 +218,6 @@ public class RIPDeath implements Listener
                     lineStr = signMessage.substring(index, length - 1);
                     sign.setLine(line, signMessage.substring(index, index+=14));
                 }
-
-                this.plugin.getLogger().info("lineStr: " + lineStr);
                     
                 charsLeft -= (index + 1);
                 line++;
@@ -236,13 +227,11 @@ public class RIPDeath implements Listener
             sign.setLine(0, signMessage);
         sign.update();
         e.getDrops().clear();
-        this.plugin.getLogger().info("Death completed");
     }
 
     @EventHandler
     public void onPlayerInteractionEvent(PlayerInteractEvent e)
     {
-        this.plugin.getLogger().info("isEmpty: " + String.valueOf(this.plugin.getDB().getProfileManager().isEmpty()));
         ArrayList<ItemStack> items = new ArrayList<>();
         Player player = e.getPlayer();
         Long time = System.currentTimeMillis();
@@ -258,6 +247,7 @@ public class RIPDeath implements Listener
         // Profile profile = profileManager;
         Chest chest = (Chest) chestBlock.getState();
         org.bukkit.block.data.type.Chest chestData = (org.bukkit.block.data.type.Chest) chest.getBlockData();
+
         if (chestData.getType() == org.bukkit.block.data.type.Chest.Type.LEFT)
             doubleChestBlock = chestBlock.getRelative(BlockFace.WEST);
         else if (chestData.getType() == org.bukkit.block.data.type.Chest.Type.RIGHT)
@@ -278,7 +268,6 @@ public class RIPDeath implements Listener
             else
                 return;
         }
-            
         
         if (signBlock.getType() != Material.OAK_WALL_SIGN)
             return;
@@ -298,15 +287,12 @@ public class RIPDeath implements Listener
         {
             // Look at DB for user
             Profile profile = this.plugin.getDB().getProfileManager().getProfile(name);
-            this.plugin.getLogger().info("profileDatas: " + String.valueOf(profile.isEmpty()));
             DeathData data = profile.getDeathData(chestBlock.getLocation());
-            this.plugin.getLogger().info("dchestblock: " + String.valueOf(data == null));
             if (data == null)
             {
                 if (doubleChestBlock != null)
                 {
                     data = profile.getDeathData(doubleChestBlock.getLocation());
-                    this.plugin.getLogger().info("dchestblock: " + String.valueOf(data == null));
                     if (data == null)
                         return;
                 }
@@ -322,7 +308,6 @@ public class RIPDeath implements Listener
             int diff = (int) differece;
             ItemStack inUse = player.getItemInUse();
             Material m = Material.valueOf(this.plugin.getConfig().getString("death.key_material").toUpperCase());
-            this.plugin.getLogger().info(inUse.getType().toString());
             if (!(inUse.getType() == m))
             {
                 
